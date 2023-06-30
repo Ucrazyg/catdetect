@@ -1,0 +1,9 @@
+This app contains a alghorim that can decide if there is a cat on the uploaded file.
+
+To maket this app work some libraries must be installed.
+App made with flask framework.
+
+Libraries to install:
+pip install tensorflow
+pip install flask
+pip install numpy
