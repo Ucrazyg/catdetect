@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check for Cat</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=chicle">
+    <style>
+        body {
+            background-image: url('../static/img/pattern.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+        }
+
+        body h2 {
+            font-family: 'chicle';
+            font-size: 40px;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        ul li {
+            list-style-type: none;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #FDEFCB;
+            width: 500px;
+            min-height: 500px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cat Detector</h2>
+        <p>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+        </p>
+        {% if filename %}
+            <div>
+                <img style="max-width: 300px;" src="{{ url_for('display_image', filename=filename) }}">
+            </div>
+        {% endif %}
+        <form method="post" action="/" enctype="multipart/form-data">
+            <dl>
+                <p>
+                    <input type="file" name="file" class="form-control" autocomplete="off" required>
+                </p>
+            </dl>
+            <p>
+                <input type="submit" value="Detect" class="btn btn-info">
+            </p>
+        </form>
+    </div>
+    </body>
+</body>
+</html>
